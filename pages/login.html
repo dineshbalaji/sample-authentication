@@ -1,0 +1,50 @@
+<html>
+
+<body>
+    <section>
+        <div>
+            <label for="name">userId</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="pwd">password</label>
+            <input type="password" id="pwd" >
+        </div>
+        <div>
+            <button onclick="loginHandler()">Login</button>
+        </div>
+    </section>
+</body>
+<script>
+    function loginHandler() {
+        var userId = document.getElementById("name").value;
+        var password = document.getElementById("pwd").value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+
+            let { readyState, status } = xhr;
+            if (readyState == 2) {
+                switch (status) {
+                    case 200:
+                        alert("Successfully loged in");
+                        document.location.href = "/dashboard";
+                        break;
+                    case 204:
+                        alert("Password is incorrect");
+                    break;
+                    case 404:
+                        alert("Account not found");
+                        break;
+                    case 500:
+                        alert("server error");    
+                }
+            }
+        }
+        xhr.open("POST", "/api/login");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(`{ "userId": "${userId}", "password": "${password}" }`);
+    }
+</script>
+
+</html>
