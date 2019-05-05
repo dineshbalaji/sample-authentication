@@ -1,6 +1,7 @@
 let pg = require("pg");
 const connectionString = 'postgresql://postgres:123@localhost:5432/UserAccount'
 
+// factory method to create DB pool
 function getPool() {
     var pool;
     return (function () {
