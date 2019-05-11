@@ -48,3 +48,16 @@ App.use("/api", Api);
 App.listen(4200, () => {
     console.log('Server started to Listen');
 });
+
+
+/**
+ *  i perpare another server hosting to host 'fishing.html' 
+ */
+
+ let hackApp = Express();
+ hackApp.get('/',(req,res) =>{
+    res.sendFile("hacking.html", { root: Path.join(__dirname) });
+ })
+ hackApp.listen('4202',()=>{
+     console.log('hack server started')
+ })

